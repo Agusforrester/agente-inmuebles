@@ -1,0 +1,22 @@
+name: Test conexion Zonaprop
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el codigo del repositorio
+        uses: actions/checkout@v7
+
+      - name: Instalar Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+
+      - name: Instalar curl_cffi
+        run: pip install curl_cffi
+
+      - name: Correr la prueba
+        run: python test_conexion.py
